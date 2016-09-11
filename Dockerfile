@@ -8,7 +8,8 @@ RUN easy_install3 pip
 RUN pip3 install --upgrade setuptools requests
 RUN cd /opt && git clone https://bitbucket.org/kfsone/tradedangerous.git
 RUN cd /opt/tradedangerous && python3 trade.py import --plug=maddavo -O=csvs
-
-VOLUME /opt/tradedangerous/data
+RUN mkdir /data
+VOLUME /data
 
 ENTRYPOINT ["python3", "/opt/tradedangerous/trade.py"]
+CMD ["import", "--plug=maddavo", "-O=csvs"]
