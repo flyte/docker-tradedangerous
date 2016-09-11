@@ -10,4 +10,6 @@ RUN cd /opt && git clone https://bitbucket.org/kfsone/tradedangerous.git
 
 VOLUME /opt/tradedangerous/data
 
-ENTRYPOINT ["python3", "tradedangerous/trade.py"]
+RUN cd /opt/tradedangerous && python3 trade.py import --plug=maddavo -O=csvs
+
+ENTRYPOINT ["python3", "/opt/tradedangerous/trade.py"]
